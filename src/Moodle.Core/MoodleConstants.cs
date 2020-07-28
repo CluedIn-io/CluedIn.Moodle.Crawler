@@ -10,6 +10,8 @@ namespace CluedIn.Crawling.Moodle.Core
         public struct KeyName
         {
             public const string ApiKey = nameof(ApiKey);
+            public const string Token = nameof(Token);
+            public const string Function = nameof(Function);
         }
 
         // TODO Complete the following section

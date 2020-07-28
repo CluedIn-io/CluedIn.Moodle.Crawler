@@ -40,6 +40,10 @@ namespace CluedIn.Provider.Moodle
             var moodleCrawlJobData = new MoodleCrawlJobData();
             if (configuration.ContainsKey(MoodleConstants.KeyName.ApiKey))
             { moodleCrawlJobData.ApiKey = configuration[MoodleConstants.KeyName.ApiKey].ToString(); }
+            if (configuration.ContainsKey(MoodleConstants.KeyName.Token))
+            { moodleCrawlJobData.Token = configuration[MoodleConstants.KeyName.Token].ToString(); }
+            if (configuration.ContainsKey(MoodleConstants.KeyName.Function))
+            { moodleCrawlJobData.Function = configuration[MoodleConstants.KeyName.Function].ToString(); }
 
             return await Task.FromResult(moodleCrawlJobData);
         }
