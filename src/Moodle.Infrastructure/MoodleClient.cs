@@ -78,11 +78,11 @@ namespace CluedIn.Crawling.Moodle.Infrastructure
                 var responseContent = response.Content.ReadAsStringAsync().Result;
                 if (response.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    //TODO log error
+                    log.Error("401 Unauthorized. Check token");
                 }
                 else if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    //TODO: log error
+                    log.Error(response.StatusCode.ToString() + " Failed to get data");
                 }
                 var results = JsonConvert.DeserializeObject<List<object>>(responseContent);
                 foreach (var item in results)
