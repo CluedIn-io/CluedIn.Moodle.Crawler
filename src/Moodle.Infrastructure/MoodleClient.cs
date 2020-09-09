@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -20,11 +21,11 @@ namespace CluedIn.Crawling.Moodle.Infrastructure
     {
         private const string BaseUri = "http://sample.com";
 
-        private readonly ILogger log;
+        private readonly ILogger<MoodleClient> log;
 
         private readonly IRestClient client;
 
-        public MoodleClient(ILogger log, MoodleCrawlJobData moodleCrawlJobData, IRestClient client) // TODO: pass on any extra dependencies
+        public MoodleClient(ILogger<MoodleClient> log, MoodleCrawlJobData moodleCrawlJobData, IRestClient client) // TODO: pass on any extra dependencies
         {
             if (moodleCrawlJobData == null)
             {
@@ -53,7 +54,7 @@ namespace CluedIn.Crawling.Moodle.Infrastructure
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 var diagnosticMessage = $"Request to {client.BaseUrl}{url} failed, response {response.ErrorMessage} ({response.StatusCode})";
-                log.Error(() => diagnosticMessage);
+                log.LogError(diagnosticMessage);
                 throw new InvalidOperationException($"Communication to jsonplaceholder unavailable. {diagnosticMessage}");
             }
 
@@ -78,11 +79,11 @@ namespace CluedIn.Crawling.Moodle.Infrastructure
                 var responseContent = response.Content.ReadAsStringAsync().Result;
                 if (response.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    log.Error("401 Unauthorized. Check token");
+                    log.LogError("401 Unauthorized. Check token");
                 }
                 else if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    log.Error(response.StatusCode.ToString() + " Failed to get data");
+                    log.LogError(response.StatusCode.ToString() + " Failed to get data");
                 }
                 var results = JsonConvert.DeserializeObject<List<object>>(responseContent);
                 foreach (var item in results)

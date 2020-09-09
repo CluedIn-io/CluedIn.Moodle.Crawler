@@ -3,7 +3,7 @@ using CluedIn.Crawling;
 using CluedIn.Crawling.Moodle;
 using CluedIn.Crawling.Moodle.Infrastructure.Factories;
 using Moq;
-using Should;
+using Shouldly;
 using Xunit;
 
 namespace Crawling.Moodle.Unit.Test
