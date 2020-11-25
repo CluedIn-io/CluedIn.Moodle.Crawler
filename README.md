@@ -1,20 +1,57 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# CluedIn.Crawling.Moodle
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+CluedIn crawler for Moodle.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+[![Build Status](https://dev.azure.com/CluedIn-io/CluedIn%20Crawlers/_apis/build/status/CluedIn-io.CluedIn.Crawling.Moodle?branchName=master)](https://dev.azure.com/CluedIn-io/CluedIn%20Crawlers/_build/latest?definitionId=TODO&branchName=master)
+------
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+## Overview
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+This repository contains the code and associated tests for the Moodle crawler.
+
+## Working with the Code
+
+Load [Crawling.Moodle.sln](.\Crawling.Moodle.sln) in Visual Studio or your preferred development IDE.
+
+### Running Tests
+
+<!-- A mocked environment is required to run `integration` and `acceptance` tests. The mocked environment can be built and run using the following [Docker](https://www.docker.com/) command:
+
+```Shell
+docker-compose up --build -d
+``` -->
+
+To run all `unit` and `integration` tests
+
+```Shell
+dotnet test --filter Unit
+```
+
+To run only `integration` tests
+
+```Shell
+dotnet test --filter Integration
+```
+
+To run [Pester](https://github.com/pester/Pester) `acceptance` tests
+
+```PowerShell
+invoke-pester test\acceptance
+```
+
+<!-- 
+To review the [WireMock](http://wiremock.org/) HTTP proxy logs
+
+```Shell
+docker-compose logs wiremock
+``` -->
+
+## References
+
+* [Moodle](TODO)
+
+### Tooling
+
+* [Docker](https://www.docker.com/)
+* [Pester](https://github.com/pester/Pester)
+<!-- * [WireMock](http://wiremock.org/) -->

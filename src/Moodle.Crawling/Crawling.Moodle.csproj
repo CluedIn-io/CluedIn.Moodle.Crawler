@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\Moodle.Infrastructure\Crawling.Moodle.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MoodleCrawlerComponent.config">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+    <ItemGroup>
+    <PackageReference Include="CluedIn.Lederne.Common"/>
+  </ItemGroup>
+</Project>

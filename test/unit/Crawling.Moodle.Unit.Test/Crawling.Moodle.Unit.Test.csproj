@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Moodle.Core\Crawling.Moodle.Core.csproj" />
+    <ProjectReference Include="..\..\..\src\Moodle.Crawling\Crawling.Moodle.csproj" />
+    <ProjectReference Include="..\..\..\src\Moodle.Infrastructure\Crawling.Moodle.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>
