@@ -38,8 +38,8 @@ namespace CluedIn.Provider.Moodle
                 throw new ArgumentNullException(nameof(configuration));
 
             var moodleCrawlJobData = new MoodleCrawlJobData();
-            if (configuration.ContainsKey(MoodleConstants.KeyName.ApiKey))
-            { moodleCrawlJobData.ApiKey = configuration[MoodleConstants.KeyName.ApiKey].ToString(); }
+            if (configuration.ContainsKey(MoodleConstants.KeyName.WebserviceToken))
+            { moodleCrawlJobData.WebserviceToken = configuration[MoodleConstants.KeyName.WebserviceToken].ToString(); }
 
             return await Task.FromResult(moodleCrawlJobData);
         }
@@ -75,7 +75,7 @@ namespace CluedIn.Provider.Moodle
             {
                 //TODO add the transformations from specific CrawlJobData object to dictionary
                 // add tests to GetHelperConfigurationBehaviour.cs
-                dictionary.Add(MoodleConstants.KeyName.ApiKey, moodleCrawlJobData.ApiKey);
+                dictionary.Add(MoodleConstants.KeyName.WebserviceToken, moodleCrawlJobData.WebserviceToken);
             }
 
             return await Task.FromResult(dictionary);

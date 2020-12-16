@@ -4,6 +4,6 @@ namespace CluedIn.Crawling.Moodle.Core
 {
     public class MoodleCrawlJobData : CrawlJobData
     {
-        public string ApiKey { get; set; }
+        public string WebserviceToken { get; set; }
     }
 }

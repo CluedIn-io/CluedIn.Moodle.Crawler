@@ -8,6 +8,6 @@
     </EmbeddedResource>
   </ItemGroup>
     <ItemGroup>
-    <PackageReference Include="CluedIn.Lederne.Common"/>
+    <PackageReference Include="CluedIn.Lederne.Common" />
   </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@ namespace CluedIn.Crawling.Moodle.Integration.Test
     {
       return new Dictionary<string, object>
             {
-                { MoodleConstants.KeyName.ApiKey, "demo" }
+                { MoodleConstants.KeyName.WebserviceToken, "WebserviceToken" }
             };
     }
   }

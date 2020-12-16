@@ -6,64 +6,61 @@ using CluedIn.Crawling.Moodle.Core;
 using Newtonsoft.Json;
 using RestSharp;
 using Microsoft.Extensions.Logging;
+using System.Collections;
+using System.Collections.Generic;
+using CluedIn.Crawling.Moodle.Core.Models;
 
 namespace CluedIn.Crawling.Moodle.Infrastructure
 {
-    // TODO - This class should act as a client to retrieve the data to be crawled.
-    // It should provide the appropriate methods to get the data
-    // according to the type of data source (e.g. for AD, GetUsers, GetRoles, etc.)
-    // It can receive a IRestClient as a dependency to talk to a RestAPI endpoint.
-    // This class should not contain crawling logic (i.e. in which order things are retrieved)
     public class MoodleClient
     {
-        private const string BaseUri = "http://sample.com";
+        private readonly ILogger<MoodleClient> _log;
+        private readonly MoodleCrawlJobData _crawlJobData;
+        private readonly IRestClient _client;
 
-        private readonly ILogger<MoodleClient> log;
-
-        private readonly IRestClient client;
-
-        public MoodleClient(ILogger<MoodleClient> log, MoodleCrawlJobData moodleCrawlJobData, IRestClient client) // TODO: pass on any extra dependencies
+        public MoodleClient(ILogger<MoodleClient> log, MoodleCrawlJobData moodleCrawlJobData)
         {
-            if (moodleCrawlJobData == null)
-            {
-                throw new ArgumentNullException(nameof(moodleCrawlJobData));
-            }
+            _log = log ?? throw new ArgumentNullException(nameof(log));
+            _crawlJobData = moodleCrawlJobData ?? throw new ArgumentNullException(nameof(moodleCrawlJobData));
 
-            if (client == null)
-            {
-                throw new ArgumentNullException(nameof(client));
-            }
-
-            this.log = log ?? throw new ArgumentNullException(nameof(log));
-            this.client = client ?? throw new ArgumentNullException(nameof(client));
-
-            // TODO use info from moodleCrawlJobData to instantiate the connection
-            client.BaseUrl = new Uri(BaseUri);
-            client.AddDefaultParameter("api_key", moodleCrawlJobData.ApiKey, ParameterType.QueryString);
+            _client = new RestClient();
+            _client.BaseUrl = new Uri("https://moodle.lederne.dk/webservice/rest/server.php?");
         }
 
-        private async Task<T> GetAsync<T>(string url)
+        public IEnumerable<User> GetUsers()
         {
-            var request = new RestRequest(url, Method.GET);
+            var request = new RestRequest(Method.GET);
+            request.AddParameter("wstoken", _crawlJobData.WebserviceToken);
+            request.AddParameter("wsfunction", "local_wspraxis_get_users");
+            request.AddParameter("moodlewsrestformat", "json");
 
-            var response = await client.ExecuteAsync(request, request.Method);
+            var response = _client.Execute(request, request.Method);
 
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                var diagnosticMessage = $"Request to {client.BaseUrl}{url} failed, response {response.ErrorMessage} ({response.StatusCode})";
-                log.LogError(diagnosticMessage);
-                throw new InvalidOperationException($"Communication to jsonplaceholder unavailable. {diagnosticMessage}");
+                _log.LogError($"Request to failed, response {response.ErrorMessage} ({response.StatusCode})");
+                yield break;
             }
 
-            var data = JsonConvert.DeserializeObject<T>(response.Content);
+            List<User> responseData;
+            try
+            {
+                responseData = JsonConvert.DeserializeObject<List<User>>(response.Content);
+            }
+            catch (Exception e)
+            {
+                _log.LogError($"Error trying to parse response data. Message: {e.Message}");
+                yield break;
+            }
 
-            return data;
+            foreach (var user in responseData)
+            {
+                yield return user;
+            }
         }
 
         public AccountInformation GetAccountInformation()
         {
-            //TODO - return some unique information about the remote data source
-            // that uniquely identifies the account
             return new AccountInformation("", "");
         }
     }
