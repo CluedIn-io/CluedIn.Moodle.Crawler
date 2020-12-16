@@ -9,7 +9,7 @@ namespace CluedIn.Crawling.Moodle.Core
     {
         public struct KeyName
         {
-            public const string ApiKey = nameof(ApiKey);
+            public const string WebserviceToken = nameof(WebserviceToken);
         }
 
         // TODO Complete the following section
@@ -31,14 +31,13 @@ namespace CluedIn.Crawling.Moodle.Core
         {
             token = new Control[]
             {
-        // You can define controls to show in the GUI in order to authenticate with this integration
-        //        new Control()
-        //        {
-        //            displayName = "API key",
-        //            isRequired = false,
-        //            name = "api",
-        //            type = "text"
-        //        }
+                new Control()
+                {
+                    displayName = "Webservice token",
+                    isRequired = true,
+                    name = "WebserviceToken",
+                    type = "text"
+                }
             }
         };
 

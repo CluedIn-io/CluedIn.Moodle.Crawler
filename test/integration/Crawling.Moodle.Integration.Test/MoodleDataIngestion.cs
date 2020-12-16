@@ -18,8 +18,7 @@ namespace CluedIn.Crawling.Moodle.Integration.Test
 
         [Theory]
         [InlineData("/Provider/Root", 1)]
-        //TODO: Add details for the count of entityTypes your test produces
-        //[InlineData("SOME_ENTITY_TYPE", 1)]
+        [InlineData("/Infrastructure/User", 4417)]
         public void CorrectNumberOfEntityTypes(string entityType, int expectedCount)
         {
             var foundCount = fixture.ClueStorage.CountOfType(entityType);

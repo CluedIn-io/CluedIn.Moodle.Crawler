@@ -28,7 +28,7 @@ namespace CluedIn.Provider.Moodle.Unit.Test.MoodleProvider
         }
 
         [Theory]
-        [InlineAutoData(MoodleConstants.KeyName.ApiKey, nameof(MoodleCrawlJobData.ApiKey))]
+        [InlineAutoData(MoodleConstants.KeyName.WebserviceToken, nameof(MoodleCrawlJobData.WebserviceToken))]
         public async Task InitializesProperties(string key, string propertyName, string sampleValue, Guid organizationId, Guid userId, Guid providerDefinitionId)
         {
             var dictionary = new Dictionary<string, object>()
