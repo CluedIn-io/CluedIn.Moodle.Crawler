@@ -1,4 +1,5 @@
-﻿using CluedIn.Core.Data;
+﻿using System;
+using CluedIn.Core.Data;
 using CluedIn.Core.Data.Vocabularies;
 
 namespace CluedIn.Crawling.Moodle.Vocabularies
@@ -29,6 +30,14 @@ namespace CluedIn.Crawling.Moodle.Vocabularies
                 UniLogin = group.Add(new VocabularyKey("UniLogin", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
                 LinkedIn = group.Add(new VocabularyKey("LinkedIn", VocabularyKeyDataType.Uri, VocabularyKeyVisibility.Visible));
             });
+
+            AddMapping(Id, CluedIn.Lederne.Common.Vocabularies.Vocabularies.LederneMoodle.UserID);
+            AddMapping(Username, CluedIn.Lederne.Common.Vocabularies.Vocabularies.LederneBruger.Brugernavn);
+            AddMapping(FirstName, CluedIn.Lederne.Common.Vocabularies.Vocabularies.LederneBruger.Fornavn);
+            AddMapping(LastName, CluedIn.Lederne.Common.Vocabularies.Vocabularies.LederneBruger.Efternavn);
+            AddMapping(Email, CluedIn.Lederne.Common.Vocabularies.Vocabularies.LederneBruger.Email);
+            AddMapping(Department, CluedIn.Lederne.Common.Vocabularies.Vocabularies.LederneBruger.Afdeling);
+            AddMapping(LinkedIn, CluedIn.Lederne.Common.Vocabularies.Vocabularies.LederneBruger.LinkedIn);
         }
 
         public VocabularyKey Id { get; set; }
