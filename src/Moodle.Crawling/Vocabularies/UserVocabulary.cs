@@ -10,25 +10,25 @@ namespace CluedIn.Crawling.Moodle.Vocabularies
         public UserVocabulary()
         {
             VocabularyName = "Moodle User";
-            KeyPrefix = "moodle.user";
+            KeyPrefix = "moodle.person";
             KeySeparator = ".";
-            Grouping = EntityType.Infrastructure.User;
+            Grouping = EntityType.Person;
 
             AddGroup("Moodle User Details", group =>
             {
-                Id = group.Add(new VocabularyKey("Id", VocabularyKeyDataType.Identifier, VocabularyKeyVisibility.Visible));
+                Id = group.Add(new VocabularyKey("Moodle_UserId", VocabularyKeyDataType.Identifier, VocabularyKeyVisibility.Visible));
                 IdNumber = group.Add(new VocabularyKey("IdNumber", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
-                Username = group.Add(new VocabularyKey("Username", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
-                FirstName = group.Add(new VocabularyKey("FirstName", VocabularyKeyDataType.PersonName, VocabularyKeyVisibility.Visible));
-                LastName = group.Add(new VocabularyKey("LastName", VocabularyKeyDataType.PersonName, VocabularyKeyVisibility.Visible));
-                Email = group.Add(new VocabularyKey("Email", VocabularyKeyDataType.Email, VocabularyKeyVisibility.Visible));
+                Username = group.Add(new VocabularyKey("Brugernavn", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
+                FirstName = group.Add(new VocabularyKey("Fornavn", VocabularyKeyDataType.PersonName, VocabularyKeyVisibility.Visible));
+                LastName = group.Add(new VocabularyKey("Efternavn", VocabularyKeyDataType.PersonName, VocabularyKeyVisibility.Visible));
+                Email = group.Add(new VocabularyKey("E-mail", VocabularyKeyDataType.Email, VocabularyKeyVisibility.Visible));
                 Auth = group.Add(new VocabularyKey("Auth", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
                 Language = group.Add(new VocabularyKey("Language", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
-                Department = group.Add(new VocabularyKey("Department", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
+                Department = group.Add(new VocabularyKey("Afdeling", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
                 AlternateName = group.Add(new VocabularyKey("AlternateName", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
                 Slutdato = group.Add(new VocabularyKey("Slutdato", VocabularyKeyDataType.DateTime, VocabularyKeyVisibility.Visible));
                 UniLogin = group.Add(new VocabularyKey("UniLogin", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
-                LinkedIn = group.Add(new VocabularyKey("LinkedIn", VocabularyKeyDataType.Uri, VocabularyKeyVisibility.Visible));
+                LinkedIn = group.Add(new VocabularyKey("Moodle_LinkedIn", VocabularyKeyDataType.Uri, VocabularyKeyVisibility.Visible));
             });
 
             AddMapping(Id, CluedIn.Lederne.Common.Vocabularies.Vocabularies.LederneMoodle.UserID);
