@@ -16,19 +16,56 @@ namespace CluedIn.Crawling.Moodle.Vocabularies
 
             AddGroup("Moodle User Details", group =>
             {
-                Id = group.Add(new VocabularyKey("Moodle_UserId", VocabularyKeyDataType.Identifier, VocabularyKeyVisibility.Visible));
-                IdNumber = group.Add(new VocabularyKey("IdNumber", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
-                Username = group.Add(new VocabularyKey("Brugernavn", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
-                FirstName = group.Add(new VocabularyKey("Fornavn", VocabularyKeyDataType.PersonName, VocabularyKeyVisibility.Visible));
-                LastName = group.Add(new VocabularyKey("Efternavn", VocabularyKeyDataType.PersonName, VocabularyKeyVisibility.Visible));
-                Email = group.Add(new VocabularyKey("E-mail", VocabularyKeyDataType.Email, VocabularyKeyVisibility.Visible));
-                Auth = group.Add(new VocabularyKey("Auth", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
-                Language = group.Add(new VocabularyKey("Language", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
-                Department = group.Add(new VocabularyKey("Afdeling", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
-                AlternateName = group.Add(new VocabularyKey("AlternateName", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
-                Slutdato = group.Add(new VocabularyKey("Slutdato", VocabularyKeyDataType.DateTime, VocabularyKeyVisibility.Visible));
-                UniLogin = group.Add(new VocabularyKey("UniLogin", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible));
-                LinkedIn = group.Add(new VocabularyKey("Moodle_LinkedIn", VocabularyKeyDataType.Uri, VocabularyKeyVisibility.Visible));
+                Id = group.Add(
+                    new VocabularyKey("Moodle_UserId", VocabularyKeyDataType.Identifier, VocabularyKeyVisibility.Visible)
+                    .WithDisplayName("Moodle_UserID")
+                    .WithDescription("Moodle UserID som er en integer og ikke unikt for systemet")
+                );
+                IdNumber = group.Add(
+                    new VocabularyKey("IdNumber", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible)
+                );
+                Username = group.Add(
+                    new VocabularyKey("Brugernavn", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible)
+                    .WithDisplayName("Brugernavn")
+                );
+                FirstName = group.Add(
+                    new VocabularyKey("Fornavn", VocabularyKeyDataType.PersonName, VocabularyKeyVisibility.Visible)
+                    .WithDisplayName("Fornavn")
+                );
+                LastName = group.Add(
+                    new VocabularyKey("Efternavn", VocabularyKeyDataType.PersonName, VocabularyKeyVisibility.Visible)
+                    .WithDisplayName("Efternavn")
+                );
+                Email = group.Add(
+                    new VocabularyKey("E-mail", VocabularyKeyDataType.Email, VocabularyKeyVisibility.Visible)
+                    .WithDisplayName("E-mail")
+                );
+                Auth = group.Add(
+                    new VocabularyKey("Auth", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible)
+                );
+                Language = group.Add(
+                    new VocabularyKey("Language", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible)
+                );
+                Department = group.Add(
+                    new VocabularyKey("Department", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible)
+                    .WithDisplayName("Afdeling")
+                );
+                AlternateName = group.Add(
+                    new VocabularyKey("AlternateName", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible)
+                );
+                Slutdato = group.Add(
+                    new VocabularyKey("Slutdato", VocabularyKeyDataType.DateTime, VocabularyKeyVisibility.Visible)
+                    .WithDisplayName("Slutdato")
+                    .WithDescription("Hvornår adgangen til systemet afsluttes")
+                );
+                UniLogin = group.Add(
+                    new VocabularyKey("UniLogin", VocabularyKeyDataType.Text, VocabularyKeyVisibility.Visible)
+                );
+                LinkedIn = group.Add(
+                    new VocabularyKey("Moodle_LinkedIn", VocabularyKeyDataType.Uri, VocabularyKeyVisibility.Visible)
+                    .WithDisplayName("Moodle_LinkedIn")
+                    .WithDescription("Link til brugerens LinkedIn")
+                );
             });
 
             AddMapping(Id, CluedIn.Lederne.Common.Vocabularies.Vocabularies.LederneMoodle.UserID);
