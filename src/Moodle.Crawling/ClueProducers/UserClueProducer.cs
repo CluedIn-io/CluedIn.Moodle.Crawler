@@ -42,15 +42,11 @@ namespace CluedIn.Crawling.Moodle.ClueProducers
 
             var vocab = new UserVocabulary();
             data.Properties[vocab.Id] = input.Id.PrintIfAvailable();
-            data.Properties[vocab.IdNumber] = input.IdNumber.PrintIfAvailable();
             data.Properties[vocab.Username] = input.Username.PrintIfAvailable();
             data.Properties[vocab.FirstName] = input.FirstName.PrintIfAvailable();
             data.Properties[vocab.LastName] = input.LastName.PrintIfAvailable();
             data.Properties[vocab.Email] = input.Email.PrintIfAvailable();
-            data.Properties[vocab.Auth] = input.Auth.PrintIfAvailable();
-            data.Properties[vocab.Language] = input.Language.PrintIfAvailable();
             data.Properties[vocab.Department] = input.Department.PrintIfAvailable();
-            data.Properties[vocab.AlternateName] = input.AlternateName.PrintIfAvailable();
 
             // Custom fields
             foreach (var field in input.CustomFields)
