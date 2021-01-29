@@ -27,7 +27,7 @@ namespace CluedIn.Crawling.Moodle.ClueProducers
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            var clue = _factory.Create(EntityType.Infrastructure.User, input.Id.ToString(), accountId);
+            var clue = _factory.Create(EntityType.Person, input.Id.ToString(), accountId);
 
             var data = clue.Data.EntityData;
 
