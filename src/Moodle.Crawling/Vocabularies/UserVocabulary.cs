@@ -53,7 +53,7 @@ namespace CluedIn.Crawling.Moodle.Vocabularies
                 );
             });
 
-            AddMapping(Id, CluedIn.Lederne.Common.Vocabularies.Vocabularies.LederneMoodle.UserID);
+            AddMapping(Id, CluedIn.Lederne.Common.Vocabularies.Vocabularies.LedernePerson.Moodle_UserID);
             AddMapping(Username, CluedIn.Lederne.Common.Vocabularies.Vocabularies.LederneBruger.Brugernavn);
             AddMapping(FirstName, CluedIn.Lederne.Common.Vocabularies.Vocabularies.LederneBruger.Fornavn);
             AddMapping(LastName, CluedIn.Lederne.Common.Vocabularies.Vocabularies.LederneBruger.Efternavn);
