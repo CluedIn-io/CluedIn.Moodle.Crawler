@@ -10,7 +10,7 @@ namespace CluedIn.Crawling.Moodle.Vocabularies
         public UserVocabulary()
         {
             VocabularyName = "Moodle User";
-            KeyPrefix = "moodle.person";
+            KeyPrefix = "moodle.user";
             KeySeparator = ".";
             Grouping = EntityType.Person;
 
