@@ -23,7 +23,10 @@ namespace CluedIn.Crawling.Moodle
 
             var client = clientFactory.CreateNew(moodlecrawlJobData);
 
-            //retrieve data from provider and yield objects
+            foreach (var user in client.GetUsers())
+            {
+                yield return user;
+            }
             
         }       
     }
